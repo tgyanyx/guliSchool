@@ -27,6 +27,7 @@ import java.util.List;
 @Api(tags = "讲师管理")
 @RestController
 @RequestMapping("/eduservice/teacher")
+@CrossOrigin
 public class EduTeacherController {
 //    把service注入
     @Autowired
@@ -115,7 +116,8 @@ public class EduTeacherController {
             wrapper.le("gmt_create",end);
         }
 
-//        wrapper
+//        排序
+        wrapper.orderByDesc("gmt_create");
 
 //        调用方法实现条件查询分页
         eduTeacherService.page(pageTeacher,wrapper);
