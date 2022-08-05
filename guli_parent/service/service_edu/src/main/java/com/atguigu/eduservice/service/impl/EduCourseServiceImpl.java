@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -29,6 +30,8 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
 //    添加课程信息
     @Override
+    //课程和简介需要一起添加
+    @Transactional
     public String saveCourseInfo(CourseInfoVo courseInfoVo) {
 //        1 向课程表添加课程基本信息
 
