@@ -219,3 +219,5 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
 	... 57 common frames omitted
+2022-08-05 20:29:36.730 [http-nio-8001-exec-6] ERROR
+                c.a.s.exceptionhandler.GlobalExceptionHandler - null

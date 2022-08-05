@@ -2,6 +2,7 @@ package com.atguigu.eduservice.controller;
 
 
 import com.atguigu.commonutils.R;
+import com.atguigu.eduservice.entity.EduChapter;
 import com.atguigu.eduservice.entity.chapter.ChapterVo;
 import com.atguigu.eduservice.service.EduChapterService;
 import com.sun.org.apache.xalan.internal.lib.ExsltDynamic;
@@ -33,5 +34,39 @@ public class EduChapterController {
 
         return R.ok().data("list",list);
     }
+
+    //添加章节
+    @PostMapping("addChapter")
+    public R addChapter(@RequestBody EduChapter eduChapter){
+        eduChapterService.save(eduChapter);
+        return R.ok();
+    }
+
+    //根据章节id查询
+    @GetMapping("getChapter/{chapterId}")
+    public R getChapter(@PathVariable String chapterId){
+        EduChapter eduChapter = eduChapterService.getById(chapterId);
+        return R.ok().data("chapter",eduChapter);
+    }
+
+    //修改章节
+    @PostMapping("updateChapter")
+    public R updateChapter(@RequestBody EduChapter eduChapter){
+        eduChapterService.updateById(eduChapter);
+        return R.ok();
+    }
+
+    //删除章节
+    @DeleteMapping("deleteById/{chapterId}")
+    public R deleteById(@PathVariable String chapterId){
+        boolean flag = eduChapterService.deleteChapter(chapterId);
+        if (flag){
+            return R.ok();
+        }else {
+            return R.error();
+        }
+
+    }
+
 }
 
