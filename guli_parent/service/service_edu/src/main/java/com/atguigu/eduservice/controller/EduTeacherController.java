@@ -64,11 +64,11 @@ public class EduTeacherController {
 //        调用方法的时候，底层封装,把分页所有数据封装到pageTeacher对象里面
         eduTeacherService.page(teacherPage,null);
 
-        try{
-            int i = 10 /0;
-        }catch (Exception e){
-            throw new GUliException(200001,"执行了自定义异常");
-        }
+//        try{
+//            int i = 10 /0;
+//        }catch (Exception e){
+//            throw new GUliException(200001,"执行了自定义异常");
+//        }
 //        自定义异常触发测试
 
         long total = teacherPage.getTotal();
