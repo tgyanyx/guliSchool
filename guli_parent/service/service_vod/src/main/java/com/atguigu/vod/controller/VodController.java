@@ -1,17 +1,17 @@
 package com.atguigu.vod.controller;
 
-
-
-
-
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
 import com.atguigu.commonutils.R;
+import com.atguigu.servicebase.exceptionhandler.GUliException;
 import com.atguigu.vod.service.VodService;
+import com.atguigu.vod.utils.ConstantPropertiesUtils;
+import com.atguigu.vod.utils.InitVodClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/edu_vod/video")
@@ -27,4 +27,35 @@ public class VodController {
         String videoId = vodService.uploadVideoAly(file);
         return R.ok().data("videoId",videoId);
     }
+
+//    根据视频id删除阿里云视频
+    @DeleteMapping("deleteVideo/{id}")
+    public R deleteVideo(@PathVariable String id){
+        try {
+            DefaultAcsClient client = InitVodClient.initVodClient(ConstantPropertiesUtils.KEY_ID, ConstantPropertiesUtils.KEY_SECRET);
+
+//            创建删除视频request对象
+            DeleteVideoRequest request = new DeleteVideoRequest();
+//            向request设置视频id
+            request.setVideoIds(id);
+//            调用初始化对象的方法实现删除
+            client.getAcsResponse(request);
+            return R.ok();
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new GUliException(20001,"删除失败");
+        }
+
+
+    }
+
+//    删除多个阿里云视频的方法
+//    参数多个视频id
+    @DeleteMapping("delete-batch")
+    public R deleteVideoBatch(@RequestBody List<String> videoIdList){
+        System.out.println("==========="+videoIdList);
+        vodService.deleteVideoBatch(videoIdList);
+        return R.ok();
+    }
+
 }
