@@ -22,7 +22,7 @@ public class MsmServiceImpl implements MsmService {
     public boolean sendMsm(HashMap<String, Object> map, String phone) {
         if(StringUtils.isEmpty(phone)) return false;
         DefaultProfile profile =
-                DefaultProfile.getProfile("default","LTAI5tJtZMXUwJ4rP2WnUiqi","OwX0SdCjD6uRTOmntc1aBAggv5gyQp");
+                DefaultProfile.getProfile("default","LTAI5tLhsgmbXNgkzasGbisg","9z90lStBqIakjMeKiOc2lVmxbuYHMX");
         IAcsClient client = new DefaultAcsClient(profile);
 //        设置相关固定参数
         CommonRequest request = new CommonRequest();

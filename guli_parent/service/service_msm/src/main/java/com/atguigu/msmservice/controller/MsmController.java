@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping("/msmservice/msm")
+@RequestMapping("/msm_service/msm")
 @CrossOrigin
 public class MsmController {
 
