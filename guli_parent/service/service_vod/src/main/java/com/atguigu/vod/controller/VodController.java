@@ -2,6 +2,8 @@ package com.atguigu.vod.controller;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
 import com.atguigu.commonutils.R;
 import com.atguigu.servicebase.exceptionhandler.GUliException;
 import com.atguigu.vod.service.VodService;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Guard;
 import java.util.List;
 
 @RestController
@@ -58,4 +61,25 @@ public class VodController {
         return R.ok();
     }
 
+//    根据视频id获取视频凭证
+    @GetMapping("getPlayAuth/{id}")
+    public R getPlayAuth(@PathVariable String id){
+        try{
+//            创建初始化对象
+            DefaultAcsClient client =
+                    InitVodClient.initVodClient(ConstantPropertiesUtils.KEY_ID,ConstantPropertiesUtils.KEY_SECRET);
+            //        创建获取视频凭证request和response
+            GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+            GetVideoPlayAuthResponse response = new GetVideoPlayAuthResponse();
+//        向request设置视频id
+            request.setVideoId(id);
+
+//        调用初始化对象的方法得到凭证
+            response = client.getAcsResponse(request);
+            System.out.println("被调用了"+ response.getPlayAuth());
+            return R.ok().data("playAuth",response.getPlayAuth());
+        }catch (Exception e){
+            throw new GUliException(20001,"视频凭证获取失败");
+        }
+    }
 }

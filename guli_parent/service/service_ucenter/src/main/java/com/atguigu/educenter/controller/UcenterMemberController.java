@@ -3,9 +3,11 @@ package com.atguigu.educenter.controller;
 
 import com.atguigu.commonutils.JwtUtils;
 import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.ordervo.UcenterMemberVo;
 import com.atguigu.educenter.entity.UcenterMember;
 import com.atguigu.educenter.entity.vo.RegisterVo;
 import com.atguigu.educenter.service.UcenterMemberService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +51,17 @@ public class UcenterMemberController {
 //        查询数据库根据用户id获取用户信息
         UcenterMember member = ucenterMemberService.getById(memberId);
         return R.ok().data("userInfo",member);
+    }
+
+
+//    根据用户id获取用户信息
+    @PostMapping("getUserInfoOrder/{id}")
+    public UcenterMemberVo getUerInfoOrder(@PathVariable String id){
+        UcenterMember member = ucenterMemberService.getById(id);
+//        把member对象里面的值复制给UcenterMembervo
+        UcenterMemberVo ucenterMemberVo = new UcenterMemberVo();
+        BeanUtils.copyProperties(member,ucenterMemberVo);
+        return ucenterMemberVo;
     }
 }
 
