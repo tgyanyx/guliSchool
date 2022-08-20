@@ -15,7 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/eduservice/teacherfront")
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 public class TeacherFrontController {
     @Autowired
     private EduTeacherService eduTeacherService;

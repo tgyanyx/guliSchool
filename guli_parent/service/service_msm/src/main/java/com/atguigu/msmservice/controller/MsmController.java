@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/msm_service/msm")
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 public class MsmController {
 
     @Autowired

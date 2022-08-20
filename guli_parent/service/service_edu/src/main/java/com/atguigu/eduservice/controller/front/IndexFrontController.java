@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/eduservice/indexfront")
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 public class IndexFrontController {
     @Autowired
     private EduCourseService eduCourseService;

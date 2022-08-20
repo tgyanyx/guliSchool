@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/edu_center/ucenter-member")
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 public class UcenterMemberController {
     @Autowired
     private UcenterMemberService ucenterMemberService;

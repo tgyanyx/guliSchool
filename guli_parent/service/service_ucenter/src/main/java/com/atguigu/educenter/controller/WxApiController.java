@@ -17,7 +17,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 @Controller //现在是请求地址不是返回数据
 @RequestMapping("/api/ucenter/wx")
 public class WxApiController {

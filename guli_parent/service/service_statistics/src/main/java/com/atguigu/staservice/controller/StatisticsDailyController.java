@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/sta_service/sta")
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 public class StatisticsDailyController {
     @Autowired
     private StatisticsDailyService service;

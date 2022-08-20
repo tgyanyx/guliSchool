@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/edu_order/paylog")
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 public class PayLogController {
     @Autowired
     private PayLogService payLogService;

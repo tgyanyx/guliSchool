@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/edu_order/order")
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 public class OrderController {
     @Autowired
     private OrderService orderService;

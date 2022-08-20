@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/edu_cms/bannerAdmin")
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 public class BannerAdminController {
     @Autowired
     private CrmBannerService bannerService;

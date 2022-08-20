@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/eduservice/edu-video")
-@CrossOrigin
+//@CrossOrigin 用网关全局处理跨域问题
 public class EduVideoController {
     @Autowired
     private EduVideoService eduVideoService;
