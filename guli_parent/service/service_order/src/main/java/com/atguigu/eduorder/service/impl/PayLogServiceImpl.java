@@ -75,7 +75,7 @@ public class PayLogServiceImpl extends ServiceImpl<PayLogMapper, PayLog> impleme
             hashMap.put("code_url",resultMap.get("code_url")); //二维码地址
 
             //微信支付二维码2小时过期，可采取2小时未支付取消订单
-            //redisTemplate.opsForValue().set(orderNo, hashMap, 120,TimeUnit.MINUTES);
+            //Template.opsForValue().set(orderNo, hashMap, 120,TimeUnit.MINUTES);
             return hashMap;
         }catch (Exception e){
             e.printStackTrace();
